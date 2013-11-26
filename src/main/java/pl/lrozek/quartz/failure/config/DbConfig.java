@@ -4,10 +4,13 @@ import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
+
+import com.googlecode.flyway.core.Flyway;
 
 public class DbConfig {
 
-    @Bean
+    @Bean(destroyMethod = "close")
     public DataSource dataSource() {
         String url = "jdbc:h2:~/.quartz;AUTO_SERVER=TRUE";
         BasicDataSource dataSource = new BasicDataSource();
@@ -15,6 +18,14 @@ public class DbConfig {
         dataSource.setUrl( url );
         dataSource.setUsername( "sa" );
         return dataSource;
+    }
+
+    @Lazy
+    @Bean(initMethod = "migrate")
+    public Flyway flyway() {
+        Flyway flyway = new Flyway();
+        flyway.setDataSource( dataSource() );
+        return flyway;
     }
 
 }
