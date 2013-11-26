@@ -100,9 +100,10 @@
             <resource>
                 <filtering>false</filtering>
                 <directory>src/main/resources</directory>
-                <includes>
-                    <include>logback.xml</include>
-                </includes>
+                <excludes>
+                    <exclude>quartz.properties</exclude>
+                    <exclude>db.props</exclude>
+                </excludes>
             </resource>
         </resources>
         <plugins>
