@@ -6,19 +6,11 @@ import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 import com.googlecode.flyway.core.Flyway;
 
 @Configuration
-@PropertySource("classpath:db.props")
 public class DbConfig {
-
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
 
     @Bean(destroyMethod = "close")
     public DataSource dataSource() {
@@ -30,7 +22,7 @@ public class DbConfig {
         return dataSource;
     }
 
-    @Bean(initMethod = "migrate")
+    @Bean(name = dbMigration, initMethod = "migrate")
     public Flyway flyway() {
         Flyway flyway = new Flyway();
         flyway.setDataSource( dataSource() );
@@ -48,5 +40,7 @@ public class DbConfig {
 
     @Value("${db.password}")
     private String password;
+
+    public static final String dbMigration = "dbMigration";
 
 }
