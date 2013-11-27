@@ -26,6 +26,7 @@ public class DbConfig {
         dataSource.setDriverClassName( driverClassName );
         dataSource.setUrl( url );
         dataSource.setUsername( username );
+        dataSource.setPassword( password );
         return dataSource;
     }
 
@@ -36,13 +37,16 @@ public class DbConfig {
         return flyway;
     }
 
-    @Value("${url}")
+    @Value("${db.url}")
     private String url;
 
-    @Value("${driverClassName}")
+    @Value("${db.driverClassName}")
     private String driverClassName;
 
-    @Value("${username}")
+    @Value("${db.username}")
     private String username;
+
+    @Value("${db.password}")
+    private String password;
 
 }
