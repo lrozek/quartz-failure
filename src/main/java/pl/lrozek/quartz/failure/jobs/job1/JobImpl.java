@@ -14,7 +14,7 @@ public class JobImpl implements Job {
 
     }
 
-    public static final String JOB_IMPL_NAME = "JobImplName";
+    public static final String JOB_IMPL_NAME = "jobImpl";
 
     private Logger logger = LoggerFactory.getLogger( getClass() );
 
