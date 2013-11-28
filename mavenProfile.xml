@@ -1,0 +1,11 @@
+<profile>
+    <id>quartz</id>
+    <properties>
+        <!-- <db.url>jdbc:log4jdbc:h2:~/.quartz;AUTO_SERVER=TRUE</db.url> -->
+        <!-- <db.url>jdbc:log4jdbc:h2:tcp://127.0.1.1:9092/~/.quartz</db.url> -->
+        <db.url>jdbc:log4jdbc:h2:tcp://127.0.1.1:9092/mem:quartz</db.url>
+        <db.driverClassName>net.sf.log4jdbc.DriverSpy</db.driverClassName>
+        <db.username>sa</db.username>
+        <db.password>sa</db.password>
+    </properties>
+</profile>
