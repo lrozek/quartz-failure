@@ -2,6 +2,8 @@ package pl.lrozek.quartz.failure.jobs.job2;
 
 import static org.quartz.JobBuilder.newJob;
 import static org.quartz.TriggerBuilder.newTrigger;
+import static pl.lrozek.quartz.failure.jobs.Constants.JOB_DETAIL;
+import static pl.lrozek.quartz.failure.jobs.Constants.Trigger;
 import static pl.lrozek.quartz.failure.jobs.job2.LoggingJob.LOGGING_JOB_NAME;
 
 import org.quartz.JobDetail;
@@ -22,8 +24,8 @@ public class LoggingJobConfigurator {
         return newTrigger().build();
     }
 
-    public static final String LOGGING_JOB_NAME_JOB_DETAIL_NAME = LOGGING_JOB_NAME + "jobDetail";
+    public static final String LOGGING_JOB_NAME_JOB_DETAIL_NAME = LOGGING_JOB_NAME + JOB_DETAIL;
 
-    public static final String LOGGING_JOB_NAME_TRIGGER = LOGGING_JOB_NAME + "Trigger";
+    public static final String LOGGING_JOB_NAME_TRIGGER = LOGGING_JOB_NAME + Trigger;
 
 }
